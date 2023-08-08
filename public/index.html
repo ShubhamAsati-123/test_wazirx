@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashmit Project</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <nav>
+        <h1>Ashmit Jagtap</h1>
+    </nav>
+    <main>
+        <!-- <div class="no">
+            <h3>#</h3>
+        </div> -->
+        <div class="container">
+            <div class="heading">
+                <h3>Currency</h3>
+                <h3>Last Traded Price</h3>
+                <h3>Buy</h3>
+                <h3>Sell</h3>
+                <h3>Volume</h3>
+                <h3>Base Unit</h3>
+            </div>
+            
+            <div class="content">
+
+            </div>
+
+        </div>
+    </main>
+</body>
+
+<script>
+    fetch('http://localhost:8008/api').then(res => {
+        return res.json();
+    }).then(data => {
+        data.forEach(element => {
+            const markup = `
+            <div class="innercontent">
+            <h4>${element.name}</h4>
+            <h4>${element.last}</h4>
+            <h4>${element.buy}</h4>
+            <h4>${element.sell}</h4>
+            <h4>${element.volume}</h4>
+            <h4>${element.base_unit}</h4>
+            </div>
+            `;
+            
+            document.querySelector('.content').
+            insertAdjacentHTML('beforeend', markup)
+
+        });
+    })
+
+
+    let res = await 
+</script>
+
+</html>

@@ -1,12 +1,14 @@
 const express = require('express');
+const cors = require("cors")
 const app = express();
 const multer = require('multer');
 const upload = multer();
 const db = require('./database/data');
 let logger = require('./middleware/logger.js');
 require('dotenv').config()
-const port = process.env.PORT
+const port = 8008
 app.use(logger);
+app.use(cors())
 app.use(upload.array());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,7 +25,7 @@ async function FetchAPI() {
 
 };
 db.ConnectDB();
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
     await FetchAPI();
        let data = await db.GetData();
     res.json(data);
