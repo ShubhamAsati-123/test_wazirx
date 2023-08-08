@@ -10,25 +10,24 @@
 <body>
     <nav>
         <h1>Ashmit Jagtap</h1>
+        <div id="countdown"></div>
     </nav>
     <main>
         <!-- <div class="no">
             <h3>#</h3>
         </div> -->
         <div class="container">
-            <div class="heading">
-                <h3>Currency</h3>
-                <h3>Last Traded Price</h3>
-                <h3>Buy</h3>
-                <h3>Sell</h3>
-                <h3>Volume</h3>
-                <h3>Base Unit</h3>
-            </div>
-            
-            <div class="content">
-
-            </div>
-
+                <table class="content">
+                    <tr class="heading">
+                        <!-- <th>ID</th> -->
+                        <th>Currency</h3>
+                        <th>Last Traded Price</h3>
+                        <th>Buy</h3>
+                        <th>Sell</h3>
+                        <th>Volume</h3>
+                        <th>Base Unit</h3>
+                    </tr>
+                </table>
         </div>
     </main>
 </body>
@@ -39,14 +38,14 @@
     }).then(data => {
         data.forEach(element => {
             const markup = `
-            <div class="innercontent">
-            <h4>${element.name}</h4>
-            <h4>${element.last}</h4>
-            <h4>${element.buy}</h4>
-            <h4>${element.sell}</h4>
-            <h4>${element.volume}</h4>
-            <h4>${element.base_unit}</h4>
-            </div>
+            <tr class="innercontent">
+                <td>${element.name}</td>
+                <td>${element.last}</td>
+                <td>${element.buy}</td>
+                <td>${element.sell}</h4>
+                <td>${element.volume}</td>
+                <td>${element.base_unit}</td>
+            </tr>
             `;
             
             document.querySelector('.content').
@@ -55,8 +54,23 @@
         });
     })
 
+    var timeleft = 10;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("countdown").innerHTML = "Finished";
+  } else {
+    document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+  }
+  timeleft -= 1;
+}, 1000);
 
-    let res = await 
+    function autoRefresh() {
+            window.location = window.location.href;
+        }
+        setInterval('autoRefresh()', 11000);
+
 </script>
 
 </html>
+
